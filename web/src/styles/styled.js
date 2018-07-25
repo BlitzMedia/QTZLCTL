@@ -9,3 +9,11 @@ export const SubHeader = styled('h2')`
 export const SubSection = styled('section')`
   margin-top: 1em;
 `
+
+export const ReleaseItem = styled('article')`
+  display: flex;
+  align-items center;
+  justify-content: flex-start;
+
+  & > * + * { margin-left: .618em; }
+`

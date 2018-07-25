@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import {SubHeader, SubSection} from '../styles/styled'
+import {SubHeader, SubSection, ReleaseItem} from '../styles/styled'
 
 
 const Release = props => (
-  <div>
-      <h3>{props.title}</h3>
-      <p>{props.artist}</p>
-  </div>
+  <ReleaseItem>
+      {props.releaseNumber} {props.artist} {props.title}
+  </ReleaseItem>
 )
 
 export default class ReleaseList extends Component {
@@ -25,7 +24,8 @@ export default class ReleaseList extends Component {
           <Release
             key={release.id}
             title={release.fields.Name}
-            artist={release.fields['Artist Name']}/>
+            artist={release.fields['Artist Name']}
+            releaseNumber = {release.fields['Release']} />
         ))}
       </SubSection>
     )
