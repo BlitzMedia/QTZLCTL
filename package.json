@@ -6,9 +6,14 @@
     "postinstall": "run-s install:server install:web",
     "install:server": "cd server && npm install",
     "install:web": "cd web && npm install",
+
     "start": "run-p start:server start:web",
     "start:server": "npm start --prefix server",
-    "start:web": "npm start --prefix web"
+    "start:web": "npm start --prefix web",
+
+    "build": "run-p build:server build:web",
+    "build:server": "cd server && npm run build",
+    "build:web": "cd web && npm run build"
   },
   "devDependencies": {
     "npm-run-all": "^4.0.2"
