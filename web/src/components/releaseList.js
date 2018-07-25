@@ -1,5 +1,11 @@
 import React, { Component } from 'react'
+import { css } from 'emotion'
 import {SubHeader, SubSection, ReleaseItem} from '../styles/styled'
+
+const reverse = css`
+  display: flex;
+  flex-direction: column-reverse;
+`
 
 
 const Release = props => (
@@ -17,7 +23,7 @@ export default class ReleaseList extends Component {
     if(!this.props.releases) return (<SubHeader>No Releases</SubHeader>)
 
     return(
-      <SubSection>
+      <SubSection className={reverse}>
         {releases.map(release => (
           <Release
             key={release.id}

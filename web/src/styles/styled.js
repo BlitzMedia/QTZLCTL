@@ -27,6 +27,7 @@ export const SubSection = styled('section')`
 
 export const ReleaseItem = styled('a')`
   padding: ${measure}em 0;
+  cursor: pointer;
 
   display: flex;
   align-items center;
