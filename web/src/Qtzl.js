@@ -15,6 +15,7 @@ const QTZLBody = styled('main')`
   border: 1em solid black;
   padding: 1em;
   height: 100vh;
+  overflow-y: scroll;
 `
 
 class Qtzl extends Component {

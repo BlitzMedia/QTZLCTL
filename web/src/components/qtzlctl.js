@@ -25,16 +25,20 @@ const qtzl = css`
   z-index: 999;
   border: .618em solid transparent;
   background: white url(${qtzlLogo}) center center no-repeat;
-  background-size: 60%;
+  background-size: 280px;
 `
 
 
 export default class QTZLCTL extends Component {
+  state = { destroy: true }
+
   componentWillMount = () => this.timeouts = null
   componentDidMount = () => this.performAndDisappear()
   componentWillUnmount = () => clearTimeout(this.timeouts)
 
   performAndDisappear = () => {
+    if(!this.state.destroy) return;
+
     const element  = document.getElementById('aniRoot');
     const target   = document.getElementById('target');
 
