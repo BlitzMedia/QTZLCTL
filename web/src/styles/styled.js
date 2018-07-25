@@ -33,7 +33,7 @@ export const SubHeader = styled('h2')`
 `
 
 export const SubSection = styled('section')`
-  margin-top: ${measure}em;
+  
 `
 
 export const ReleaseItem = styled('a')`
