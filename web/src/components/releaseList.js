@@ -4,7 +4,7 @@ import {SubHeader, SubSection, ReleaseItem} from '../styles/styled'
 
 const Release = props => (
   <ReleaseItem>
-      {props.releaseNumber} {props.artist} {props.title}
+      {props.releaseNumber} | {props.artist} - {props.title}
   </ReleaseItem>
 )
 
