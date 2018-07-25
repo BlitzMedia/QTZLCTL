@@ -5,6 +5,7 @@ import {SubHeader, SubSection, ReleaseItem} from '../styles/styled'
 const reverse = css`
   display: flex;
   flex-direction: column-reverse;
+  width: 100%;
 `
 
 

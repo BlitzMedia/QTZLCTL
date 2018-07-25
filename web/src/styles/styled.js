@@ -33,11 +33,11 @@ export const SubHeader = styled('h2')`
 `
 
 export const SubSection = styled('section')`
-  
+
 `
 
 export const ReleaseItem = styled('a')`
-  padding: ${measure}em 0;
+  padding: .9em 0;
   cursor: pointer;
 
   display: flex;
