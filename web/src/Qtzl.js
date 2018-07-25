@@ -25,7 +25,7 @@ class Qtzl extends Component {
 
   async huntTheData() {
     // Check cache
-    const cachedRecords = localStorage.getItem('releases')
+    const cachedRecords = sessionStorage.getItem('releases')
     if (cachedRecords) {
       this.setState({ releases: JSON.parse(cachedRecords) })
       console.log('Cached!')
@@ -42,7 +42,7 @@ class Qtzl extends Component {
 
   setTheData = (data) => {
     console.log(data)
-    localStorage.setItem('releases', JSON.stringify(data.releases));
+    sessionStorage.setItem('releases', JSON.stringify(data.releases));
     this.setState(data)
   }
 

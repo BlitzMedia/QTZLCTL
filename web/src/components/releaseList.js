@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-//import { css } from 'emotion'
-import {SubHeader} from '../styles/type'
+import {SubHeader, SubSection} from '../styles/styled'
 
 
 const Release = props => (
@@ -12,41 +11,23 @@ const Release = props => (
 
 export default class ReleaseList extends Component {
 
-  //const {releases} = this.props
-
-
-  // const listItems = releases.map((release) =>
-  //   <li key={number.toString()}
-  //             value={number} />
-  // );
-  // const release = () => {
-  //
-  // }
-
-  componentDidMount() {
-    //console.log(releases)
-  }
-
   render() {
     const {releases} = this.props
-    // console.log(releases)
-    // const items = releases.map((release) => <h1>Release</h1>)
-    // const items = releases.map((release) =>
-    //   <li key={release}></li>
-    // )
+
+    // Just in case
     if(!this.props.releases) return <h3>No releases</h3>
 
     return(
-      <div>
+      <SubSection>
         <SubHeader>Releases</SubHeader>
 
         {releases.map(release => (
           <Release
             key={release.id}
             title={release.fields.Name}
-            artist={release.fields.Artist}/>
+            artist={release.fields['Artist Name']}/>
         ))}
-      </div>
+      </SubSection>
     )
   }
 }
