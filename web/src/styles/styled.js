@@ -25,7 +25,7 @@ export const SubSection = styled('section')`
   margin-top: ${measure}em;
 `
 
-export const ReleaseItem = styled('article')`
+export const ReleaseItem = styled('a')`
   padding: ${measure}em 0;
 
   display: flex;
@@ -33,6 +33,19 @@ export const ReleaseItem = styled('article')`
   justify-content: flex-start;
 
   & > * + * { margin-left: .618em; }
+
+  position: relative;
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: black;
+    width: 0%;
+    transition: width .25s cubic-bezier(.36,.4,.37,.81);
+  }
+  &:hover:after { width: 100%; }
 `
 
 export const SocialList = styled('aside')`
