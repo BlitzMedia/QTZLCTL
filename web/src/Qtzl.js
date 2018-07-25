@@ -1,10 +1,15 @@
 import React, { Component } from 'react'
 import { SocialIcon } from 'react-social-icons'
 import { css } from 'emotion'
-import { Logo, QTZLBody, SocialList } from './styles/styled'
+import { Logo, QTZLBody, QTZLHeader, SocialList, SuperFooter } from './styles/styled'
 import './styles/globalStyles'
 import QTZLCTL from './components/qtzlctl'
 import ReleaseList from './components/releaseList'
+
+const inverseDragon  = css`
+  transform: scaleX(-1);
+  display: inline-block;
+`
 
 class Qtzl extends Component {
   state = {
@@ -53,7 +58,10 @@ class Qtzl extends Component {
     return (
       <QTZLBody>
         <QTZLCTL />
-        <Logo>QTZLCTL</Logo>
+
+        <QTZLHeader>
+          <Logo>QTZLCTL</Logo>
+        </QTZLHeader>
 
         <ReleaseList releases={releases}/>
 
@@ -66,6 +74,12 @@ class Qtzl extends Component {
               network={link.fields.Name.toLowerCase()} />
           ))}
         </SocialList>
+
+        <SuperFooter>
+          <small><span className={inverseDragon}>🐉</span> © QTZLCTL 2018 All Rights Reserved 🐉</small>
+          <br/>
+          <small>Designed by <a href="https://blitz.media" target="_blank">Blitz!</a>⚡️</small>
+        </SuperFooter>
       </QTZLBody>
     )
   }
