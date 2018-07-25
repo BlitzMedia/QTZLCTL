@@ -6,11 +6,9 @@
     "postinstall": "run-s install:server install:web build:server build:web",
     "install:server": "cd server && npm install",
     "install:web": "cd web && npm install",
-
     "start": "run-p start:server start:web",
     "start:server": "npm start --prefix server",
     "start:web": "npm start --prefix web",
-
     "build": "run-p build:server build:web",
     "build:server": "cd server && npm run build",
     "build:web": "cd web && npm run build"
@@ -19,7 +17,6 @@
     "npm-run-all": "^4.0.2"
   },
   "dependencies": {
-    "node-fetch": "^2.2.0",
     "airtable": "^0.5.6",
     "body-parser": "^1.18.3",
     "emotion": "^9.2.6",
@@ -29,6 +26,7 @@
     "react-dom": "^16.4.1",
     "react-emotion": "^9.2.6",
     "react-scripts": "1.1.4",
+    "react-social-icons": "^3.0.0",
     "react-transition-group": "1.x",
     "whatwg-fetch": "^2.0.4"
   }

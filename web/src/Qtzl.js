@@ -1,33 +1,26 @@
 import React, { Component } from 'react'
-//import {css} from 'emotion'
-import styled from 'react-emotion'
+import { SocialIcon } from 'react-social-icons'
+import { css } from 'emotion'
+import { Logo, QTZLBody, SocialList } from './styles/styled'
 import './styles/globalStyles'
 import QTZLCTL from './components/qtzlctl'
 import ReleaseList from './components/releaseList'
-import QTZLOutThere from './components/qtzlOutThere'
-
-const Logo = styled('h1')`
-  font-size: 1.4em;
-  letter-spacing: 0.5em;
-`
-
-const QTZLBody = styled('main')`
-  border: 1em solid black;
-  padding: 1em;
-  height: 100vh;
-  overflow-y: scroll;
-`
 
 class Qtzl extends Component {
   state = {
+    links: [],
     releases: null
   }
 
   async huntTheData() {
     // Check cache
     const cachedRecords = sessionStorage.getItem('releases')
+    const cachedLinks = sessionStorage.getItem('links')
     if (cachedRecords) {
-      this.setState({ releases: JSON.parse(cachedRecords) })
+      this.setState({
+        releases: JSON.parse(cachedRecords),
+        links: JSON.parse(cachedLinks)
+      })
       console.log('Cached!')
       return
     }
@@ -37,12 +30,16 @@ class Qtzl extends Component {
     console.log('Not Cached!')
     const data = await response.json()
 
-    this.setTheData({releases: data.records})
+    this.setTheData({
+      releases: data.releases,
+      links: data.links
+    })
   }
 
   setTheData = (data) => {
-    console.log(data)
     sessionStorage.setItem('releases', JSON.stringify(data.releases));
+    sessionStorage.setItem('links', JSON.stringify(data.links));
+
     this.setState(data)
   }
 
@@ -51,7 +48,7 @@ class Qtzl extends Component {
   }
 
   render() {
-    const {releases} = this.state
+    const {releases, links} = this.state
 
     return (
       <QTZLBody>
@@ -59,10 +56,20 @@ class Qtzl extends Component {
         <Logo>QTZLCTL</Logo>
 
         <ReleaseList releases={releases}/>
-        <QTZLOutThere />
+
+        <SocialList>
+          {links.map((link, i) => (
+            <SocialIcon key={i}
+              url={link.fields.URL}
+              style={{ height: 25, width: 25 }}
+              color="black"
+              network={link.fields.Name.toLowerCase()} />
+          ))}
+        </SocialList>
       </QTZLBody>
     )
   }
 }
+//
 
 export default Qtzl;

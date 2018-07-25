@@ -14,18 +14,16 @@ export default class ReleaseList extends Component {
     const {releases} = this.props
 
     // Just in case
-    if(!this.props.releases) return <h3>No releases</h3>
+    if(!this.props.releases) return (<SubHeader>No Releases</SubHeader>)
 
     return(
       <SubSection>
-        <SubHeader>Releases</SubHeader>
-
         {releases.map(release => (
           <Release
             key={release.id}
             title={release.fields.Name}
             artist={release.fields['Artist Name']}
-            releaseNumber = {release.fields['Release']} />
+            releaseNumber={release.fields['Release']} />
         ))}
       </SubSection>
     )

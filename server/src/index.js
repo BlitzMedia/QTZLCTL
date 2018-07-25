@@ -13,13 +13,13 @@ app.use(bodyParser.json())
 // Fetch functions
 
 const getReleases = async(req, res) => {
-  const url = `${endpoint}/${base}/releases?api_key=${key}`
+  const url = `${endpoint}/${base}/releases?api_key=${key}&&sortField=Release`
 
   const response = await fetch(url)
   const releases = await response.json()
 
   //return releases
-  res.json(releases)
+  return releases.records
 }
 
 const getArtists = async(req, res) => {
@@ -32,20 +32,34 @@ const getArtists = async(req, res) => {
   res.json(artists)
 }
 
+const getLinks = async(req, res) => {
+  const url = `${endpoint}/${base}/links?api_key=${key}&view=Grid%20view`
+
+
+  const response = await fetch(url)
+  const links = await response.json()
+
+  return links.records
+}
+
 const getTheShit = async(req, res) => {
   // This is sequential, so...
+
   // Get the releases
   const releases = await getReleases()
 
 
   // Get the artists
-  const artists = await getArtists()
+  //const artists = await getArtists()
 
-  res.json({releases, artists})
+  // Get the links
+  const links = await getLinks()
+
+  res.json({releases, links})
 }
 
 app.get('/', (req, res) => res.send('Hello World!'))
-app.get('/api/qtzlctl', getReleases)
+app.get('/api/qtzlctl', getTheShit)
 
 //const port = process.env.PORT || 5000;
 const port = 5000;
