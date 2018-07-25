@@ -25,17 +25,6 @@ const getReleases = async(req, res) => {
 app.get('/', (req, res) => res.send('Hello World!'))
 app.get('/api/qtzlctl', getReleases)
 
-// app.get('/', (req, res) => {
-//   var base = 'apptg1boOr10IkCsY';
-//   var table = 'releases';
-//   var key = 'keyMmV8ObRgCW8YNy'
-//
-//   var resp = await fetch('https://api.airtable.com/v0/' + base + '/' + table + '?api_key=' + key)
-//
-//   const json = await resp.json()
-//   res.json(json)
-// });
-
 //const port = process.env.PORT || 5000;
 const port = 5000;
-app.listen(port, () => console.log('Yo! This QTZL huntin! '));
+app.listen(port, () => console.log('Yo! This QTZL huntin! '))

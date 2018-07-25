@@ -24,12 +24,12 @@ class Qtzl extends Component {
 
   async huntTheData() {
     // Check cache
-    // const cachedRecords = localStorage.getItem('releases')
-    // if (cachedRecords) {
-    //   this.setState({ releases: JSON.parse(cachedRecords) })
-    //   console.log('Cached!')
-    //   return
-    // }
+    const cachedRecords = localStorage.getItem('releases')
+    if (cachedRecords) {
+      this.setState({ releases: JSON.parse(cachedRecords) })
+      console.log('Cached!')
+      return
+    }
 
     // Proceed with fetch
     const response = await fetch('/api/qtzlctl')
