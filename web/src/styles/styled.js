@@ -119,7 +119,7 @@ export const SuperFooter = styled('footer')`
 
 export const ReleaseBody = css`
   justify-content: flex-start;
-  background: rgba(255, 255, 255, .5);
+  background: rgba(255, 255, 255, .7);
 `
 
 export const InfoStyle = css`
@@ -131,7 +131,11 @@ export const InfoStyle = css`
 `
 
 export const Player = css`
-  opacity: .5;
-  transition: opacity .25s ease;
-  &:hover { opacity: 1 }
+  max-width: 100%;
+  @media (max-width: 640px) { width: 100% !important; }
+  @media (min-width: 768px) {
+    opacity: .5;
+    transition: opacity .25s ease;
+    &:hover { opacity: 1 }
+  }
 `
