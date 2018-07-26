@@ -1,48 +1,33 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import ReactMarkdown from 'react-markdown'
-import { css } from 'emotion'
-import { QTZLBody, Logo, ReleaseName, QTZLHeader, CloseButton } from '../styles/styled'
-import styled from 'styled-components'
-import ProgressiveImage from 'react-progressive-bg-image'
+import { QTZLBody, Logo, ReleaseBody, ReleaseName, QTZLHeader, CloseButton, Player, InfoStyle } from '../styles/styled'
+import ReactPlayer from 'react-player'
+import CoverImage from './Backgrounder'
+//import PlaylistSoundPlayer from './soundcloud'
 
-const releaseBody = css`
-  justify-content: flex-start;
-  background: rgba(0,0,0,.5);
-  color: white;
-  a, a:visited { color: white }
-  border-color: white;
-`
-
-const Backgrounder = styled(ProgressiveImage)`
-  width: 100%; height: 100%;
-  position: absolute;
-  top: 0; bottom: 0; right: 0; left: 0;
-  background-position: center center;
-  background-size: cover;
-  z-index: -1;
-`
+// import { css } from 'emotion'
+// import styled from 'react-emotion'
 
 class ReleaseItem extends Component {
-
-  componentDidMount() {
-    console.log('Release!')
-  }
 
   render() {
     if(!this.props.release) return null
     const Release = this.props.id
     const Artist = this.props.release.fields['Artist Name'] || ''
-    const {Name, Info } = this.props.release.fields || ''
-    const FullBackground = this.props.release.fields.Background[0].url || ''
-    const Thumb = this.props.release.fields.Background[0].thumbnails.small.url || ''
-    return (
-        <QTZLBody className={releaseBody}>
+    const { Name, Info, SoundCloud, Video } = this.props.release.fields || ''
 
-          <Backgrounder
-            src={FullBackground}
-            placeholder={Thumb}
-            transition="all 1s linear"
+    const Backgrounds = this.props.release.fields.Background,
+          Lo          = Backgrounds.find(bg => bg.filename.includes('1500')).url,
+          Hi          = Backgrounds.find(bg => bg.filename.includes('2500')).url,
+          Thumb       = Backgrounds[0].thumbnails.small.url || '';
+
+    return (
+        <QTZLBody className={ReleaseBody}>
+          <CoverImage
+            hi={Hi}
+            lo={Lo}
+            thumb={Thumb}
           />
 
           <QTZLHeader>
@@ -52,11 +37,12 @@ class ReleaseItem extends Component {
             <NavLink to="/" className={CloseButton} />
           </QTZLHeader>
 
-          <div style={{padding: '1em 0'}}>
-            <ReactMarkdown source={Info} />
+          <div className={InfoStyle}>
+            <ReactMarkdown source={Info}/>
           </div>
 
-          <div className={css``}></div>
+          <ReactPlayer className={Player} url={Video} playing/> <br/>
+          <ReactPlayer className={Player} url={SoundCloud} playing />
         </QTZLBody>
     )
   }
@@ -64,3 +50,10 @@ class ReleaseItem extends Component {
 
 export default ReleaseItem
 //
+
+
+// <Backgrounder
+//   src={FullBackground}
+//   placeholder={Thumb}
+//   transition="all 1s linear"
+// />

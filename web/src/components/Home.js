@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
-import { css } from 'emotion'
 import { QTZLBody, Logo, QTZLHeader, SocialList, SuperFooter } from '../styles/styled'
+import { PostLogo } from '../styles/styled'
 import { SocialIcon } from 'react-social-icons'
 import ReleaseList from './releaseList'
+import { css } from 'emotion'
 import '../styles/globalStyles'
 
 const inverseDragon  = css`
@@ -22,6 +23,7 @@ class Home extends Component {
       <QTZLBody>
         <QTZLHeader>
           <Logo>QTZLCTL</Logo>
+          <PostLogo>A Transatlantic Musical Collective</PostLogo>
         </QTZLHeader>
 
         <ReleaseList releases={releases}/>

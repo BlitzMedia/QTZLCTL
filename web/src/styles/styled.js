@@ -4,9 +4,17 @@ import { css } from 'emotion'
 const measure = 1;
 
 export const Logo = styled('h1')`
-  font-size: 1.4em;
-  letter-spacing: 0.5em;
+  font-size: 1.6em;
+  letter-spacing: 1em;
   text-transform: uppercase;
+`
+
+export const PostLogo = styled('h2')`
+  font-size: 0.6em;
+  letter-spacing: 0.34em;
+  margin-top: 8px;
+  text-transform: uppercase;
+  font-family: 'Dosis';
 `
 
 export const ReleaseName = styled('h2')`
@@ -107,4 +115,23 @@ export const SuperFooter = styled('footer')`
   transition: opacity .15s ease;
 
   &:hover { opacity: .75 }
+`
+
+export const ReleaseBody = css`
+  justify-content: flex-start;
+  background: rgba(255, 255, 255, .5);
+`
+
+export const InfoStyle = css`
+  padding: ${measure}em 0;
+  textTransform: lowercase;
+  maxWidth: 768px;
+  font-family: 'Dosis';
+  font-weight: 400;
+`
+
+export const Player = css`
+  opacity: .5;
+  transition: opacity .25s ease;
+  &:hover { opacity: 1 }
 `
