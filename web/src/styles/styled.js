@@ -7,6 +7,10 @@ export const Logo = styled('h1')`
   font-size: 1.6em;
   letter-spacing: 1em;
   text-transform: uppercase;
+
+  @media (max-width: 640px) {
+    letter-spacing: .5em;
+  }
 `
 
 export const PostLogo = styled('h2')`
@@ -15,6 +19,9 @@ export const PostLogo = styled('h2')`
   margin-top: 8px;
   text-transform: uppercase;
   font-family: 'Dosis';
+  @media (max-width: 640px) {
+    font-size: .8em;
+  }
 `
 
 export const ReleaseName = styled('h2')`
