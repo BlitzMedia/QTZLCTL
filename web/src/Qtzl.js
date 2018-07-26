@@ -1,20 +1,17 @@
 import React, { Component } from 'react'
-import { SocialIcon } from 'react-social-icons'
+import { Route } from 'react-router-dom'
 import { css } from 'emotion'
-import { Logo, QTZLBody, QTZLHeader, SocialList, SuperFooter } from './styles/styled'
 import './styles/globalStyles'
-import QTZLCTL from './components/qtzlctl'
-import ReleaseList from './components/releaseList'
 
-const inverseDragon  = css`
-  transform: scaleX(-1);
-  display: inline-block;
-`
+import QTZLCTL from './components/qtzlctl'
+import Home from './components/Home'
+import ReleaseItem from './components/releaseItem'
 
 class Qtzl extends Component {
   state = {
     links: [],
-    releases: null
+    releases: [],
+    loaded: false
   }
 
   async huntTheData() {
@@ -24,9 +21,9 @@ class Qtzl extends Component {
     if (cachedRecords) {
       this.setState({
         releases: JSON.parse(cachedRecords),
-        links: JSON.parse(cachedLinks)
+        links: JSON.parse(cachedLinks),
+        loaded: true
       })
-      console.log('Cached!')
       return
     }
 
@@ -45,7 +42,11 @@ class Qtzl extends Component {
     sessionStorage.setItem('releases', JSON.stringify(data.releases));
     sessionStorage.setItem('links', JSON.stringify(data.links));
 
-    this.setState(data)
+    this.setState({
+      releases: data.releases,
+      links: data.links,
+      loaded: true
+    })
   }
 
   componentDidMount() {
@@ -53,37 +54,25 @@ class Qtzl extends Component {
   }
 
   render() {
-    const {releases, links} = this.state
+    const {releases, links, loaded} = this.state
 
     return (
-      <QTZLBody>
-        <QTZLCTL />
+      <div>
+        <QTZLCTL hide={loaded} />
 
-        <QTZLHeader>
-          <Logo>QTZLCTL</Logo>
-        </QTZLHeader>
+        <Route exact path='/' render={({ match }) => (
+          <Home releases={releases} links={links} match={match} />
+        )} />
 
-        <ReleaseList releases={releases}/>
-
-        <SocialList>
-          {links.map((link, i) => (
-            <SocialIcon key={i}
-              url={link.fields.URL}
-              style={{ height: 25, width: 25 }}
-              color="black"
-              network={link.fields.Name.toLowerCase()} />
-          ))}
-        </SocialList>
-
-        <SuperFooter>
-          <small><span className={inverseDragon}>🐉</span> © QTZLCTL 2018 All Rights Reserved 🐉</small>
-          <br/>
-          <small>Designed by <a href="https://blitz.media" target="_blank">Blitz!</a>⚡️</small>
-        </SuperFooter>
-      </QTZLBody>
+        <Route exact path='/releases/:id' render={({ match }) => {
+          const { id } = match.params
+          const release = this.state.releases.find(r => r.fields.Release === id)
+          return <ReleaseItem release={release} id={id} />
+        }} />
+      </div>
     )
   }
 }
 //
 
-export default Qtzl;
+export default Qtzl

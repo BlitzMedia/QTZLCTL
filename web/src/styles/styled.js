@@ -1,14 +1,16 @@
 import styled from 'react-emotion'
-import { css } from 'emotion'
+// import { css } from 'emotion'
 
 const measure = 1;
 
 export const Logo = styled('h1')`
   font-size: 1.4em;
   letter-spacing: 0.5em;
+  text-transform: uppercase;
 `
 
 export const QTZLBody = styled('main')`
+  background: white;
   border: ${measure}em solid black;
   padding: ${measure}em;
   height: 100vh;
@@ -21,9 +23,9 @@ export const QTZLBody = styled('main')`
 `
 
 export const QTZLHeader = styled('header')`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
 `
 
 export const SubHeader = styled('h2')`
@@ -36,7 +38,7 @@ export const SubSection = styled('section')`
 
 `
 
-export const ReleaseItem = styled('a')`
+export const ReleaseItem = styled('article')`
   padding: .9em 0;
   cursor: pointer;
 
