@@ -14,6 +14,7 @@
     "build:web": "cd web && npm run build"
   },
   "devDependencies": {
+    "babel-plugin-emotion": "^9.2.6",
     "npm-run-all": "^4.0.2"
   },
   "dependencies": {
@@ -25,10 +26,13 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-emotion": "^9.2.6",
+    "react-markdown": "^3.4.1",
+    "react-progressive-bg-image": "^3.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "react-social-icons": "^3.0.0",
     "react-transition-group": "1.x",
+    "styled-components": "^3.3.3",
     "whatwg-fetch": "^2.0.4"
   }
 }

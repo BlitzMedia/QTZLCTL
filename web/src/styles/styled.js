@@ -1,5 +1,5 @@
 import styled from 'react-emotion'
-// import { css } from 'emotion'
+import { css } from 'emotion'
 
 const measure = 1;
 
@@ -7,6 +7,30 @@ export const Logo = styled('h1')`
   font-size: 1.4em;
   letter-spacing: 0.5em;
   text-transform: uppercase;
+`
+
+export const ReleaseName = styled('h2')`
+  font-size: 1.4em;
+  letter-spacing: 0.21em;
+  text-transform: uppercase;
+  font-weight: normal;
+`
+
+export const CloseButton = css`
+  padding: ${measure*2}em;
+  position: absolute;
+  right: 0; top: 0;
+  width: ${measure}em; height: ${measure}em;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:before {
+    content: '×';
+    font-size: 150%;
+    font-weight: bold;
+  }
 `
 
 export const QTZLBody = styled('main')`
