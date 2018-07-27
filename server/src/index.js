@@ -29,7 +29,8 @@ const getArtists = async(req, res) => {
   const artists = await response.json()
 
   //return artists
-  res.json(artists)
+  return(artists.records)
+  console.log(artists)
 }
 
 const getLinks = async(req, res) => {
@@ -50,12 +51,12 @@ const getTheShit = async(req, res) => {
 
 
   // Get the artists
-  //const artists = await getArtists()
+  const artists = await getArtists()
 
   // Get the links
   const links = await getLinks()
 
-  res.json({releases, links})
+  res.json({releases, artists, links})
 }
 
 app.get('/', (req, res) => res.send('Hello World!'))

@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { QTZLBody, Logo, QTZLHeader, SocialList, SuperFooter } from '../styles/styled'
-import { PostLogo } from '../styles/styled'
+import { NavLink } from 'react-router-dom'
+import { QTZLBody, Logo, PostLogo, QTZLHeader, SocialList, SuperFooter, ListItem } from '../styles/styled'
 import { SocialIcon } from 'react-social-icons'
-import ReleaseList from './releaseList'
 import { css } from 'emotion'
 import '../styles/globalStyles'
 
@@ -13,20 +12,37 @@ const inverseDragon  = css`
 
 class Home extends Component {
 
-  componentDidMount() {
-    console.log(this.props)
+  componentWillMount() {
+    console.log(`
+Welcome to 🐉 QTZLCTL 🐉
+This website is built by Gorka Molero with some help from his friends
+Made with React, Express & Emotion
+-> https://gorka.space
+-> https://blitz.media
+    `)
   }
 
   render() {
-    const {links, releases} = this.props
+    const {content, links} = this.props
+
     return(
       <QTZLBody>
         <QTZLHeader>
-          <Logo>QTZLCTL</Logo>
-          <PostLogo>A Transatlantic Musical Collective</PostLogo>
+          <div>
+            <Logo>QTZLCTL</Logo>
+            <PostLogo>A Transatlantic Musical Collective</PostLogo>
+          </div>
+
+          <nav>
+            <NavLink strict to='/artists'>Artists</NavLink>
+            <span className="navSeparator"> / </span>
+            <NavLink strict to='/'>Releases</NavLink>
+          </nav>
         </QTZLHeader>
 
-        <ReleaseList releases={releases}/>
+        <section className="content">
+          {content.map((item, i) => <NavLink key={i} to={item.url} className={ListItem}>{item.name}</NavLink>)}
+        </section>
 
         <SocialList>
           {links.map((link, i) => (

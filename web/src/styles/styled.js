@@ -3,6 +3,22 @@ import { css } from 'emotion'
 
 const measure = 1;
 
+export const QTZLBody = styled('main')`
+  background: white;
+  border: ${measure}em solid black;
+  padding: ${measure}em;
+  height: 100vh;
+  width: 100%;
+  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  & > * { width: 100%; }
+`
+
 export const Logo = styled('h1')`
   font-size: 1.6em;
   letter-spacing: 1em;
@@ -31,40 +47,26 @@ export const ReleaseName = styled('h2')`
   font-weight: normal;
 `
 
-export const CloseButton = css`
-  padding: ${measure*2}em;
-  position: absolute;
-  right: 0; top: 0;
-  width: ${measure}em; height: ${measure}em;
-
+export const QTZLHeader = styled('header')`
+  width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-
-  &:before {
-    content: '×';
-    font-size: 150%;
-    font-weight: bold;
-  }
-`
-
-export const QTZLBody = styled('main')`
-  background: white;
-  border: ${measure}em solid black;
-  padding: ${measure}em;
-  height: 100vh;
-  overflow-y: scroll;
-
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
   justify-content: space-between;
-`
 
-export const QTZLHeader = styled('header')`
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-between;
+  nav {
+    &:hover * { opacity: .5; }
+    a {
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      font-size: 0.8em;
+      padding: ${measure/2}em;
+      transition: opacity .15s ease;
+      &:hover { opacity: 1; }
+    }
+  }
+
+  nav
 `
 
 export const SubHeader = styled('h2')`
@@ -77,13 +79,15 @@ export const SubSection = styled('section')`
 
 `
 
-export const ReleaseItem = styled('article')`
+export const ListItem = css`
   padding: .9em 0;
   cursor: pointer;
 
   display: flex;
   align-items center;
   justify-content: flex-start;
+
+  width: 100%;
 
   & > * + * { margin-left: .618em; }
 
@@ -131,8 +135,8 @@ export const ReleaseBody = css`
 
 export const InfoStyle = css`
   padding: ${measure}em 0;
-  textTransform: lowercase;
-  maxWidth: 768px;
+  text-transform: lowercase;
+  max-width: 360px !important;
   font-family: 'Dosis';
   font-weight: 400;
 `
@@ -145,4 +149,10 @@ export const Player = css`
     transition: opacity .25s ease;
     &:hover { opacity: 1 }
   }
+`
+
+export const Reverse = css`
+  display: flex;
+  flex-direction: column-reverse;
+  width: 100%;
 `
