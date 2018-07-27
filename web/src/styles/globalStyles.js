@@ -7,7 +7,7 @@ injectGlobal(`
   body {
     font-family: 'europa',sans-serif;
     letter-spacing: 0.04em;
-    font-size: 13px;
+    font-size: 14px;
   }
 
   a, a:visited {

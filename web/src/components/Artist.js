@@ -18,6 +18,14 @@ class Artist extends Component {
 
     const { Name, BIO } = this.props.artist.fields
     const Releases = this.props.releases
+    const gal = this.props.artist.fields.Gallery ?
+      this.props.artist.fields.Gallery.map(img => ({
+      src: img.url,
+      thumbnail: img.thumbnails.large.url,
+      thumbnailWidth: img.thumbnails.large.height,
+      thumbnailHeight: img.thumbnails.large.width,
+      rowHeight: 'auto'
+    })) : []
 
     //console.log(this.props.fields)
 
@@ -34,13 +42,7 @@ class Artist extends Component {
           <ReactMarkdown source={BIO}/>
 
           <Gallery
-            images={this.props.artist.fields.Gallery.map(img => ({
-              src: img.url,
-              thumbnail: img.thumbnails.large.url,
-              thumbnailWidth: img.thumbnails.large.height,
-              thumbnailHeight: img.thumbnails.large.width,
-              rowHeight: 'auto'
-            }))}
+            images={gal}
             enableLightbox={true}
             enableImageSelection={false}/>
         </div>
