@@ -14,7 +14,20 @@ class Qtzl extends Component {
     artists: [],
     releases: [],
     content: [],
-    loaded: false
+    loaded: false,
+    redirects: {
+      'qtzlctl001-okasno-bamboo': 'QTZLCTL001',
+      'qtzlctl002-nicola-cruz-lea': 'QTZLCTL002',
+      'qtzlctl003-el-buho-quebrada': 'QTZLCTL003',
+      'qtzlctl004-cross-echeyde-el-florida': 'QTZLCTL004',
+      'qtzlctl005-okasno-almost-there': 'QTZLCTL005',
+      'qtzlctl006-quixosis-aguas': 'QTZLCTL006',
+      'qtzlctl007-rodrigo-gallardo-agua-de-la-tierra': 'QTZLCTL007',
+      'qtzlctl008-quixosis-de-fiucher': 'QTZLCTL008',
+      'qtzlctl009-jai-illusions': 'QTZLCTL009',
+      'qtzlctl010-gorka-the-uncanny': 'QTZLCTL010',
+      'qtzlctl011-di-laif-los-siete-dias': 'QTZLCTL011'
+    }
   }
 
   async huntTheData() {
@@ -64,7 +77,7 @@ class Qtzl extends Component {
 
 
   render() {
-    const {releases, artists, links, loaded} = this.state
+    const {releases, artists, links, loaded, redirects} = this.state
     artists.forEach(a => a.slug = slugify(a.fields.Name).toLowerCase())
 
     const releaseContent = releases.map(r => ({
@@ -92,6 +105,15 @@ class Qtzl extends Component {
           <Route exact path='/artists' render={({ match }) => (
             <Home content={artistContent} links={links} match={match} />
           )} />
+          <Redirect from="/qtzl-artists" to="/artists"/>
+
+          {Object.keys(redirects).map((redirect, i) => {
+            const where = `/releases/${redirect}`,
+                  to = `/releases/${redirects[redirect]}`
+
+            console.log(`${where} : ${to}`)
+            return <Redirect key={i} from={where} to={to} />
+          })}
 
           <Route exact path='/releases/:id' render={({ match }) => {
             const release = releases.find(r => r.fields.Release === match.params.id)
