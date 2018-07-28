@@ -110,8 +110,6 @@ class Qtzl extends Component {
           {Object.keys(redirects).map((redirect, i) => {
             const where = `/releases/${redirect}`,
                   to = `/releases/${redirects[redirect]}`
-
-            console.log(`${where} : ${to}`)
             return <Redirect key={i} from={where} to={to} />
           })}
 
