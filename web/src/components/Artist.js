@@ -4,6 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import Gallery from 'react-grid-gallery'
 import { QTZLBody, QTZLHeader, Logo, ReleaseBody, ListItem, SubHeader, InfoStyle } from '../styles/styled'
 import CloseButton from './CloseButton'
+import Helmet from 'react-helmet';
 
 class Artist extends Component {
   state = {
@@ -27,10 +28,13 @@ class Artist extends Component {
       rowHeight: 'auto'
     })) : []
 
-    //console.log(this.props.fields)
-
     return (
       <QTZLBody className={ReleaseBody} style={{background: 'white'}}>
+
+        <Helmet>
+          <title itemProp="name" lang="en">{Name} @ QTZLCTL</title>
+          <meta name="description" content="Todos on steroid!" />
+        </Helmet>
 
         <QTZLHeader style={{display: 'block'}}>
           <Logo>{Name}</Logo>
