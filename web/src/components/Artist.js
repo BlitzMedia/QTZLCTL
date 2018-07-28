@@ -31,11 +31,6 @@ class Artist extends Component {
     return (
       <QTZLBody className={ReleaseBody} style={{background: 'white'}}>
 
-        <Helmet>
-          <title itemProp="name" lang="en">{Name} @ QTZLCTL</title>
-          <meta name="description" content="Todos on steroid!" />
-        </Helmet>
-
         <QTZLHeader style={{display: 'block'}}>
           <Logo>{Name}</Logo>
 
