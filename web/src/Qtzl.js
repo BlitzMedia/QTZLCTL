@@ -127,6 +127,10 @@ class Qtzl extends Component {
           <Route render={({ match }) => (
             <Home content={releaseContent} links={links} match={match} />
           )} />
+
+          <Route path='/new-release' component={() => window.location = 'https://airtable.com/shrZmwaQTDjOlBrg3'}/>
+          <Route path='/new-track' component={() => window.location = 'https://airtable.com/shrEaAxCPM7bVpA6H'}/>
+
         </Switch>
       </div>
     )
