@@ -23,4 +23,9 @@ injectGlobal(`
   .tile-viewport, .tile-viewport img {
     height: auto !important;
   }
+
+  .content {
+    flex: 1;
+    padding: 2em 0;
+  }
 `)

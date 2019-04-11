@@ -4,7 +4,6 @@ import ReactMarkdown from 'react-markdown'
 import Gallery from 'react-grid-gallery'
 import { QTZLBody, QTZLHeader, Logo, ReleaseBody, ListItem, SubHeader, InfoStyle } from '../styles/styled'
 import CloseButton from './CloseButton'
-import Helmet from 'react-helmet';
 
 class Artist extends Component {
   state = {
